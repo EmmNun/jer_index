@@ -1,5 +1,44 @@
 // =========================================
-// DADOS DOS PROJETOS (Adicione quantos quiser aqui!)
+// GRADE DE LOSANGOS DO HERO
+// =========================================
+function buildDiamondGrid() {
+    const grid = document.getElementById('diamond-grid');
+    if (!grid) return;
+
+    const cols = 14;
+    const rows = 8;
+
+    const red = { r: 255, g: 20, b: 60 };   
+    const blue = { r: 0, g: 120, b: 255 };   
+
+    const fragment = document.createDocumentFragment();
+
+    for (let row = 0; row < rows; row++) {
+        for (let col = 0; col < cols; col++) {
+            const diamond = document.createElement('div');
+            diamond.className = 'diamond';
+
+            const ratio = col / (cols - 1);
+
+            let r = Math.round(red.r + (blue.r - red.r) * ratio);
+            let g = Math.round(red.g + (blue.g - red.g) * ratio);
+            let b = Math.round(red.b + (blue.b - red.b) * ratio);
+
+            const lightnessBoost = Math.sin(ratio * Math.PI) * 40; 
+            r = Math.min(255, Math.round(r + lightnessBoost));
+            g = Math.min(255, Math.round(g + lightnessBoost));
+            b = Math.min(255, Math.round(b + lightnessBoost));
+
+            diamond.style.setProperty('--tile-color', `rgb(${r}, ${g}, ${b})`);
+            fragment.appendChild(diamond);
+        }
+    }
+
+    grid.appendChild(fragment);
+}
+
+// =========================================
+// DADOS DOS PROJETOS (Adicione novos projetos aqui)
 // =========================================
 const projects = [
     {
@@ -7,7 +46,8 @@ const projects = [
         desc: 'Design de embalagem física com acabamento especial em papel reciclado e hot stamping.',
         images: [
             'https://via.placeholder.com/700x500/111/fff?text=Embalagem+1',
-            'https://via.placeholder.com/700x500/222/fff?text=Embalagem+2'
+            'https://via.placeholder.com/700x500/222/fff?text=Embalagem+2',
+            'https://via.placeholder.com/700x500/333/fff?text=Embalagem+3'
         ]
     },
     {
@@ -15,7 +55,8 @@ const projects = [
         desc: 'Impressão física limitada em serigrafia 3 cores sobre papel alta gramatura.',
         images: [
             'https://via.placeholder.com/700x500/111/fff?text=Poster+1',
-            'https://via.placeholder.com/700x500/222/fff?text=Poster+2'
+            'https://via.placeholder.com/700x500/222/fff?text=Poster+2',
+            'https://via.placeholder.com/700x500/333/fff?text=Poster+3'
         ]
     },
     {
@@ -25,19 +66,13 @@ const projects = [
             'https://via.placeholder.com/700x500/111/fff?text=Branding+1',
             'https://via.placeholder.com/700x500/222/fff?text=Branding+2'
         ]
-    },
-    // Para adicionar novos trabalhos, basta copiar um bloco acima e colar aqui embaixo:
-    {
-        title: 'Novo Projeto Exemplo',
-        desc: 'Descrição do seu novo projeto incrível.',
-        images: [
-            'https://via.placeholder.com/700x500/111/fff?text=Novo+1',
-            'https://via.placeholder.com/700x500/222/fff?text=Novo+2'
-        ]
     }
 ];
 
-// Gera os cards do carrossel automaticamente com base na lista 'projects'
+let currentProject = 0;
+let currentImage = 0;
+
+// Renderiza o carrossel na página
 function renderCarousel() {
     const carousel = document.getElementById('project-carousel');
     if (!carousel) return;
@@ -58,14 +93,103 @@ function renderCarousel() {
     });
 }
 
-// Função para mover o carrossel para os lados ao clicar nas setas
+// Rola o carrossel com as setas
 function scrollCarousel(direction) {
     const carousel = document.getElementById('project-carousel');
-    const scrollAmount = 330; // Tamanho do card + espaçamento
+    const scrollAmount = 330;
     carousel.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
 }
 
-// Executa a criação do carrossel quando a página carregar
+// Abre o modal
+function openModal(projectIndex) {
+    currentProject = projectIndex;
+    currentImage = 0;
+
+    const modal = document.getElementById('modal');
+    document.getElementById('modal-title').textContent = projects[projectIndex].title;
+    document.getElementById('modal-desc').textContent = projects[projectIndex].desc;
+
+    createThumbs();
+    updateModalView();
+
+    modal.style.display = 'flex';
+}
+
+// Atualiza a foto principal e miniaturas
+function updateModalView() {
+    const project = projects[currentProject];
+    
+    const img = document.getElementById('modal-image');
+    img.src = project.images[currentImage];
+    img.alt = `${project.title} - foto ${currentImage + 1}`;
+
+    const thumbs = document.querySelectorAll('#modal-thumbs img');
+    thumbs.forEach((thumb, index) => {
+        if (index === currentImage) {
+            thumb.classList.add('active');
+        } else {
+            thumb.classList.remove('active');
+        }
+    });
+}
+
+// Cria miniaturas do modal
+function createThumbs() {
+    const project = projects[currentProject];
+    const thumbsContainer = document.getElementById('modal-thumbs');
+    thumbsContainer.innerHTML = '';
+
+    project.images.forEach((src, index) => {
+        const thumb = document.createElement('img');
+        thumb.src = src;
+        thumb.alt = `Miniatura ${index + 1}`;
+
+        thumb.addEventListener('click', () => {
+            currentImage = index;
+            updateModalView();
+        });
+
+        thumbsContainer.appendChild(thumb);
+    });
+}
+
+// Próxima foto
+function nextImage() {
+    const project = projects[currentProject];
+    currentImage = (currentImage + 1) % project.images.length;
+    updateModalView();
+}
+
+// Foto anterior
+function prevImage() {
+    const project = projects[currentProject];
+    currentImage = (currentImage - 1 + project.images.length) % project.images.length;
+    updateModalView();
+}
+
+// Fecha o modal
+function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+}
+
+// Eventos de clique fora e teclado
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('modal');
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', (event) => {
+    const modal = document.getElementById('modal');
+    if (modal.style.display !== 'flex') return;
+
+    if (event.key === 'ArrowRight') nextImage();
+    if (event.key === 'ArrowLeft') prevImage();
+    if (event.key === 'Escape') closeModal();
+});
+
+// Inicialização geral ao carregar a página
 document.addEventListener('DOMContentLoaded', () => {
     buildDiamondGrid();
     renderCarousel();
