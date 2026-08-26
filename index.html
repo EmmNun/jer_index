@@ -19,19 +19,16 @@
         </ul>
     </nav>
 
-    <!-- HERO SECTION (INÍCIO) - ESTILO OLD SCHOOL -->
+    <!-- HERO SECTION (INÍCIO) -->
     <section id="home" class="home">
+        <!-- Grade de losangos gerada dinamicamente via JavaScript -->
+        <div id="diamond-grid"></div>
 
-        <!-- Grade de losangos (gerada via JS) -->
-        <div class="diamond-grid" id="diamond-grid"></div>
-        <div class="star star-left">★</div>
-        <div class="star star-right">★</div>
-
-        <!-- Título Principal -->
-        <div class="title-wrapper">
-            <h1><span class="word-blue">GRAPHIC</span> <span class="word-red">DESIGNER</span></h1>
+        <!-- Título e Subtítulo -->
+        <div class="hero-content">
+            <h1>GRAPHIC DESIGNER</h1>
+            <p>Jeremy Ortiz</p>
         </div>
-        <p class="hero-sub">by Jeremy Ortiz</p>
     </section>
 
     <!-- SEÇÃO SOBRE MIM -->
@@ -44,7 +41,7 @@
             <div class="sobre-texto">
                 <p>Olá! Meu nome é <strong>Jeremy Ortiz</strong>, sou Designer Gráfico apaixonado por transformar ideias conceituais em experiências visuais marcantes e identidades autênticas.</p>
                 <p>Especializado em branding, design editorial e impressos de alta precisão, busco sempre unir a estética retrô-futurista e o minimalismo contemporâneo com composições cheias de energia e identidade visual forte.</p>
-
+                
                 <div class="stats-grid">
                     <div class="stat-card">
                         <h3>5+</h3>
@@ -85,22 +82,21 @@
         </div>
     </section>
 
-    <!-- MODAL DE DETALHES DO PROJETO / GALERIA DE FOTOS -->
+    <!-- MODAL DE DETALHES DO PROJETO -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
-
             <h3 id="modal-title">Título do Projeto</h3>
-
-            <div class="modal-gallery">
-                <button class="modal-nav prev" onclick="prevImage()" aria-label="Foto anterior">&#10094;</button>
-                <img id="modal-image" src="" alt="Foto do projeto">
-                <button class="modal-nav next" onclick="nextImage()" aria-label="Próxima foto">&#10095;</button>
-            </div>
-
-            <div class="modal-thumbs" id="modal-thumbs"></div>
-
             <p id="modal-desc">Descrição do projeto...</p>
+            
+            <div class="modal-gallery-container">
+                <img id="modal-image" src="" alt="Imagem do Projeto">
+                <div class="modal-nav-buttons">
+                    <button onclick="prevImage()">&#10094;</button>
+                    <button onclick="nextImage()">&#10095;</button>
+                </div>
+            </div>
+            <div id="modal-thumbs" class="modal-thumbs"></div>
         </div>
     </div>
 

@@ -3,10 +3,8 @@
     --card-bg: #0d0d0d;
     --text-color: #ffffff;
     --text-secondary: #aaaaaa;
-    --blue-accent: #0033a0;
-    --red-accent: #d32027;
-    --white: #ffffff;
-    --black: #000000;
+    --blue-accent: #0088ff;
+    --red-accent: #ff0044;
 }
 
 * {
@@ -57,11 +55,7 @@ nav {
 
 .nav-links a:hover { color: var(--blue-accent); }
 
-/* =========================================
-   HERO SECTION - ESTILO OLD SCHOOL
-   Paleta: azul, vermelho, branco e preto
-   Sem sombreamento no título principal
-========================================= */
+/* HERO SECTION COM GRADE DE LOSANGOS */
 .home {
     height: 100vh;
     display: flex;
@@ -72,81 +66,61 @@ nav {
     text-align: center;
     padding: 0 20px;
     overflow: hidden;
-    background: var(--black);
+    background-color: #050505;
 }
 
-/* Grade de losangos, cor migrando da esquerda (vermelho) pra direita (azul) */
-.diamond-grid {
+/* Contêiner da grade de losangos preenchendo o fundo */
+#diamond-grid {
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: repeat(14, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 15px;
+    padding: 20px;
+    opacity: 0.35; /* Suaviza para o fundo não brigar com o texto */
     z-index: 1;
+    pointer-events: none;
 }
 
+/* Estilo individual de cada losango brilhante */
 .diamond {
-    width: 70%;
-    height: 70%;
-    margin: auto;
-    background: var(--tile-color);
+    width: 100%;
+    height: 100%;
+    background-color: var(--tile-color);
     transform: rotate(45deg);
-    border: 3px solid var(--black);
+    box-shadow: 0 0 12px var(--tile-color), inset 0 0 8px rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    transition: transform 0.3s ease;
 }
 
-/* Estrelas decorativas nos cantos, por cima da grade */
-.star {
-    position: absolute;
-    color: var(--white);
-    font-size: 2rem;
-    z-index: 2;
-    opacity: 0.9;
-    text-shadow: none;
-}
-
-.star-left { top: 10%; left: 8%; }
-.star-right { bottom: 10%; right: 8%; }
-
-/* Faixa branca com borda preta grossa segurando o título */
-.title-wrapper {
+/* Conteúdo do Hero (Título e Subtítulo) */
+.hero-content {
     position: relative;
     z-index: 5;
-    background: var(--white);
-    border: 6px solid var(--black);
-    padding: 25px 50px;
 }
 
 .home h1 {
-    font-family: 'Arial Black', 'Arial', sans-serif;
-    font-size: 4rem;
+    font-family: 'Georgia', serif;
+    font-size: 4.5rem;
     font-weight: 900;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
     text-transform: uppercase;
-    line-height: 1.1;
-    /* Sem text-shadow / sem blur / sem duplicação de camadas */
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
-.home h1 .word-blue {
-    color: var(--blue-accent);
-    -webkit-text-stroke: 2px var(--black);
-}
-
-.home h1 .word-red {
-    color: var(--red-accent);
-    -webkit-text-stroke: 2px var(--black);
-}
-
-.hero-sub {
-    position: relative;
-    z-index: 5;
-    margin-top: 25px;
-    font-size: 1.2rem;
-    letter-spacing: 5px;
+.home p {
+    font-size: 1.4rem;
+    color: #ffffff;
+    letter-spacing: 6px;
     text-transform: uppercase;
-    color: var(--white);
-    background: var(--black);
-    padding: 8px 24px;
-    border: 3px solid var(--white);
+    font-weight: 300;
+    opacity: 0.9;
 }
 
 /* SOBRE MIM */
@@ -201,9 +175,7 @@ nav {
 .carousel-item h3 { margin: 15px 0 5px; font-size: 1.1rem; }
 .carousel-item p { font-size: 0.85rem; color: var(--text-secondary); }
 
-/* =========================================
-   MODAL / LIGHTBOX DE FOTOS DO PROJETO
-========================================= */
+/* MODAL */
 .modal {
     display: none; position: fixed; z-index: 2000; left: 0; top: 0;
     width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85);
@@ -212,78 +184,21 @@ nav {
 
 .modal-content {
     background: #111; padding: 30px; border-radius: 8px; max-width: 600px;
-    width: 92%; border: 1px solid var(--blue-accent); position: relative;
+    width: 90%; border: 1px solid var(--blue-accent); position: relative;
+    text-align: center;
 }
 
 .close-btn { position: absolute; right: 20px; top: 15px; font-size: 1.5rem; cursor: pointer; color: #fff; }
 
-#modal-title { margin-bottom: 20px; padding-right: 30px; }
-
-.modal-gallery {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 15px;
-}
-
-.modal-gallery img {
-    width: 100%;
-    max-height: 340px;
-    object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #222;
-}
-
-.modal-nav {
-    flex: 0 0 auto;
-    background: var(--card-bg);
-    border: 1px solid #333;
-    color: #fff;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.2s, border-color 0.2s;
-}
-
-.modal-nav:hover { background: var(--red-accent); border-color: var(--red-accent); }
-
-.modal-thumbs {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
-
-.modal-thumbs img {
-    width: 60px;
-    height: 45px;
-    object-fit: cover;
-    border-radius: 4px;
-    cursor: pointer;
-    border: 2px solid transparent;
-    opacity: 0.6;
-    transition: opacity 0.2s, border-color 0.2s;
-}
-
-.modal-thumbs img:hover { opacity: 0.9; }
-
-.modal-thumbs img.active {
-    opacity: 1;
-    border-color: var(--blue-accent);
-}
+.modal-gallery-container { position: relative; margin-top: 20px; }
+.modal-gallery-container img { width: 100%; max-height: 350px; object-fit: cover; border-radius: 4px; }
+.modal-nav-buttons { display: flex; justify-content: space-between; position: absolute; top: 50%; width: 100%; transform: translateY(-50%); padding: 0 10px; }
+.modal-nav-buttons button { background: rgba(0,0,0,0.6); color: #fff; border: none; padding: 10px 15px; cursor: pointer; font-size: 1.2rem; border-radius: 4px; }
+.modal-thumbs { display: flex; gap: 10px; justify-content: center; margin-top: 15px; overflow-x: auto; }
+.modal-thumbs img { width: 60px; height: 45px; object-fit: cover; cursor: pointer; opacity: 0.5; border-radius: 4px; border: 1px solid transparent; }
+.modal-thumbs img.active { opacity: 1; border-color: var(--blue-accent); }
 
 /* CONTATO */
 .contato-section { padding: 80px 50px; background-color: #020202; text-align: center; border-top: 1px solid #1a1a1a; }
 .contato-info { margin-top: 30px; font-size: 1.1rem; line-height: 2.2rem; }
 .contato-info a { color: var(--blue-accent); text-decoration: none; }
-
-/* RESPONSIVO */
-@media (max-width: 600px) {
-    .home h1 { font-size: 2.4rem; }
-    .title-wrapper { padding: 18px 25px; }
-    .sobre-container { grid-template-columns: 1fr; }
-}

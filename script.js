@@ -1,45 +1,50 @@
 // =========================================
-// GRADE DE LOSANGOS DO HERO
-// Gera uma grade de losangos cuja cor muda
-// gradualmente do vermelho (esquerda) para o
-// azul (direita), misturando as duas cores no meio.
+// GRADE DE LOSANGOS DO HERO (Com brilho e degradê)
 // =========================================
 function buildDiamondGrid() {
     const grid = document.getElementById('diamond-grid');
     if (!grid) return;
 
-    const cols = 12;
-    const rows = 7;
+    const cols = 14;
+    const rows = 8;
 
-    // Cores base (mesmas do :root)
-    const red = { r: 211, g: 32, b: 39 };   // --red-accent
-    const blue = { r: 0, g: 51, b: 160 };   // --blue-accent
+    // Cores base: Vermelho (esquerda) e Azul (direita)
+    const red = { r: 255, g: 20, b: 60 };   
+    const blue = { r: 0, g: 120, b: 255 };   
+
+    const fragment = document.createDocumentFragment();
 
     for (let row = 0; row < rows; row++) {
         for (let col = 0; col < cols; col++) {
             const diamond = document.createElement('div');
             diamond.className = 'diamond';
 
-            // 0 = totalmente esquerda, 1 = totalmente direita
+            // Ratio de 0 (esquerda) a 1 (direita)
             const ratio = col / (cols - 1);
 
-            const r = Math.round(red.r + (blue.r - red.r) * ratio);
-            const g = Math.round(red.g + (blue.g - red.g) * ratio);
-            const b = Math.round(red.b + (blue.b - red.b) * ratio);
+            // Mistura as cores do vermelho para o azul
+            let r = Math.round(red.r + (blue.r - red.r) * ratio);
+            let g = Math.round(red.g + (blue.g - red.g) * ratio);
+            let b = Math.round(red.b + (blue.b - red.b) * ratio);
+
+            // Clareia um pouco as cores no meio/direita para dar o efeito solicitado
+            const lightnessBoost = Math.sin(ratio * Math.PI) * 40; 
+            r = Math.min(255, Math.round(r + lightnessBoost));
+            g = Math.min(255, Math.round(g + lightnessBoost));
+            b = Math.min(255, Math.round(b + lightnessBoost));
 
             diamond.style.setProperty('--tile-color', `rgb(${r}, ${g}, ${b})`);
-            grid.appendChild(diamond);
+            fragment.appendChild(diamond);
         }
     }
+
+    grid.appendChild(fragment);
 }
 
 document.addEventListener('DOMContentLoaded', buildDiamondGrid);
 
 // =========================================
-// DADOS DOS PROJETOS
-// Cada projeto tem um título, descrição e uma
-// lista de fotos. Troque as URLs pelas suas
-// imagens reais (ou caminhos locais, ex: "img/foto1.jpg").
+// DADOS DOS PROJETOS (Galeria e Modal)
 // =========================================
 const projects = [
     {
@@ -71,35 +76,44 @@ const projects = [
     }
 ];
 
-// Controla qual projeto e qual foto estão sendo exibidos no momento
 let currentProject = 0;
 let currentImage = 0;
 
-// Abre o modal já mostrando a primeira foto do projeto clicado
+// Abre o modal com base no índice do projeto
 function openModal(projectIndex) {
     currentProject = projectIndex;
     currentImage = 0;
 
     const modal = document.getElementById('modal');
-    document.getElementById('modal-title').innerText = projects[projectIndex].title;
-    document.getElementById('modal-desc').innerText = projects[projectIndex].desc;
+    document.getElementById('modal-title').textContent = projects[projectIndex].title;
+    document.getElementById('modal-desc').textContent = projects[projectIndex].desc;
 
-    renderImage();
-    renderThumbs();
+    createThumbs();
+    updateModalView();
 
     modal.style.display = 'flex';
 }
 
-// Atualiza a foto principal exibida
-function renderImage() {
+// Atualiza a visualização da imagem e miniaturas
+function updateModalView() {
     const project = projects[currentProject];
+    
     const img = document.getElementById('modal-image');
     img.src = project.images[currentImage];
-    img.alt = project.title + ' - foto ' + (currentImage + 1);
+    img.alt = `${project.title} - foto ${currentImage + 1}`;
+
+    const thumbs = document.querySelectorAll('#modal-thumbs img');
+    thumbs.forEach((thumb, index) => {
+        if (index === currentImage) {
+            thumb.classList.add('active');
+        } else {
+            thumb.classList.remove('active');
+        }
+    });
 }
 
-// Gera as miniaturas (thumbnails) de todas as fotos do projeto
-function renderThumbs() {
+// Cria as miniaturas no modal
+function createThumbs() {
     const project = projects[currentProject];
     const thumbsContainer = document.getElementById('modal-thumbs');
     thumbsContainer.innerHTML = '';
@@ -107,33 +121,29 @@ function renderThumbs() {
     project.images.forEach((src, index) => {
         const thumb = document.createElement('img');
         thumb.src = src;
-        thumb.alt = 'Miniatura ' + (index + 1);
-        if (index === currentImage) thumb.classList.add('active');
+        thumb.alt = `Miniatura ${index + 1}`;
 
-        thumb.onclick = function () {
+        thumb.addEventListener('click', () => {
             currentImage = index;
-            renderImage();
-            renderThumbs();
-        };
+            updateModalView();
+        });
 
         thumbsContainer.appendChild(thumb);
     });
 }
 
-// Vai para a próxima foto do projeto (volta ao início ao chegar no fim)
+// Avança para a próxima foto
 function nextImage() {
     const project = projects[currentProject];
     currentImage = (currentImage + 1) % project.images.length;
-    renderImage();
-    renderThumbs();
+    updateModalView();
 }
 
-// Vai para a foto anterior do projeto (vai para o fim ao passar do início)
+// Retorna para a foto anterior
 function prevImage() {
     const project = projects[currentProject];
     currentImage = (currentImage - 1 + project.images.length) % project.images.length;
-    renderImage();
-    renderThumbs();
+    updateModalView();
 }
 
 // Fecha o modal
@@ -141,16 +151,15 @@ function closeModal() {
     document.getElementById('modal').style.display = 'none';
 }
 
-// Fechar o modal ao clicar fora da caixa principal
-window.onclick = function (event) {
+// Fechar modal clicando fora da caixa ou pressionando ESC
+window.addEventListener('click', (event) => {
     const modal = document.getElementById('modal');
     if (event.target === modal) {
-        modal.style.display = 'none';
+        closeModal();
     }
-};
+});
 
-// Navegar com as setas do teclado (esquerda/direita) e fechar com Esc
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', (event) => {
     const modal = document.getElementById('modal');
     if (modal.style.display !== 'flex') return;
 
