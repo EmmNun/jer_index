@@ -1,16 +1,16 @@
-// Função para abrir o modal de galeria e preencher com as fotos extras do projeto
+// Função para abrir o modal com as fotos do projeto clicado
 function openGallery(title, imageUrls) {
     const modal = document.getElementById('galleryModal');
     const modalTitle = document.getElementById('modal-title');
     const gridContainer = document.getElementById('modal-gallery-images');
 
-    // Define o título do diretório/projeto
+    // Define o título do modal com o nome do projeto
     modalTitle.innerText = title;
 
-    // Limpa a grade de imagens anterior
+    // Limpa as imagens anteriores do modal
     gridContainer.innerHTML = '';
 
-    // Insere cada imagem correspondente no modal
+    // Adiciona dinamicamente cada imagem correspondente ao projeto
     imageUrls.forEach(url => {
         const img = document.createElement('img');
         img.src = url;
@@ -18,17 +18,17 @@ function openGallery(title, imageUrls) {
         gridContainer.appendChild(img);
     });
 
-    // Exibe o modal na tela
+    // Mostra o modal na tela
     modal.style.display = 'flex';
 }
 
-// Função para fechar a galeria
+// Função para fechar o modal
 function closeGallery() {
     const modal = document.getElementById('galleryModal');
     modal.style.display = 'none';
 }
 
-// Fecha o modal ao clicar fora da janela de conteúdo
+// Fecha o modal caso o usuário clique na área escura ao redor dele
 window.onclick = function(event) {
     const modal = document.getElementById('galleryModal');
     if (event.target === modal) {

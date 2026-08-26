@@ -3,26 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JEREMY ORTIZ // TERMINAL PORTFOLIO</title>
+    <title>Jeremy Ortiz // Designer Gráfico</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- SCANLINES / EFEITO DE TELA CRT ANTIGA -->
-    <div class="crt-overlay"></div>
-
     <!-- BARRA DE NAVEGAÇÃO -->
     <nav>
-        <div class="logo">&gt; JEREMY_ORTIZ.SYS</div>
+        <div class="logo">JEREMY ORTIZ</div>
         <ul class="nav-links">
-            <li><a href="#home">[01.HOME]</a></li>
-            <li><a href="#sobre">[02.BIO]</a></li>
-            <li><a href="#trabalhos">[03.WORKS]</a></li>
-            <li><a href="#contato">[04.CONTACT]</a></li>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#trabalhos">Trabalhos</a></li>
+            <li><a href="#contato">Contato</a></li>
         </ul>
     </nav>
 
-    <!-- HERO SECTION (COM LOSANGOS EM PERSPECTIVA E DESFOQUE) -->
+    <!-- HERO SECTION (COM OS LOSANGOS EM GRADIENTE) -->
     <section id="home" class="home">
         <div class="diamond-background">
             <div class="diamond-col col-1">
@@ -46,35 +43,34 @@
         </div>
 
         <div class="title-wrapper">
-            <p class="terminal-tag">&lt;status: online&gt;</p>
-            <h1 class="framed-title">GRAPHIC_DESIGNER</h1>
-            <p class="subtitle">root@jeremy-ortiz:~$ portfolio_v1.0</p>
+            <h1 class="gradient-title">JEREMY ORTIZ</h1>
+            <p class="subtitle">Designer Gráfico & Criativo</p>
         </div>
     </section>
 
     <!-- SEÇÃO SOBRE MIM -->
     <section id="sobre" class="sobre-section">
-        <h2 class="section-title">// 01. SOBRE_MIM</h2>
+        <h2>Sobre Mim</h2>
         <div class="sobre-container">
             <div class="sobre-imagem-box">
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Jeremy Ortiz" class="sobre-foto">
             </div>
             <div class="sobre-texto">
-                <p>&gt; Olá! Meu nome é <strong>Jeremy Ortiz</strong>. Opero como Designer Gráfico focado em identidades visuais de alta precisão e estética industrial/retro-futurista.</p>
-                <p>&gt; Estruturando conceitos visuais brutos em experiências limpas, funcionais e marcantes.</p>
+                <p>Olá! Meu nome é <strong>Jeremy Ortiz</strong>. Sou um Designer Gráfico apaixonado por transformar conceitos em identidades visuais marcantes, funcionais e cheias de personalidade.</p>
+                <p>Trabalho com foco em branding, direção de arte e design digital, sempre buscando entregar projetos que conectam marcas ao seu público de forma autêntica.</p>
                 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <h3>[5+]</h3>
-                        <p>ANOS_EXP</p>
+                        <h3>5+</h3>
+                        <p>Anos de Experiência</p>
                     </div>
                     <div class="stat-card">
-                        <h3>[50+]</h3>
-                        <p>PROJETOS</p>
+                        <h3>50+</h3>
+                        <p>Projetos Entregues</p>
                     </div>
                     <div class="stat-card">
-                        <h3>[100%]</h3>
-                        <p>RAW_CODE</p>
+                        <h3>100%</h3>
+                        <p>Clientes Satisfeitos</p>
                     </div>
                 </div>
             </div>
@@ -83,49 +79,49 @@
 
     <!-- SEÇÃO MEUS TRABALHOS (GALERIA MULTI-FOTOS) -->
     <section id="trabalhos" class="galeria-section">
-        <h2 class="section-title">// 02. ARQUIVOS_DE_TRABALHO</h2>
-        <p class="section-subtitle">[ Clique em um diretório para abrir o buffer de imagens ]</p>
+        <h2>Meus Trabalhos</h2>
+        <p class="section-subtitle">Clique em um projeto para ver a galeria completa de imagens</p>
         
         <div class="carousel">
             <!-- Projeto 1 -->
-            <div class="carousel-item" onclick="openGallery('DIR // EMBALAGEM_ECO', ['https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80'])">
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=300&q=80" alt="Embalagem Eco">
-                <h3>./embalagem_eco</h3>
-                <p>status: concluído [3 arquivos]</p>
+            <div class="carousel-item" onclick="openGallery('Embalagem Sustentável', ['https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80'])">
+                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=300&q=80" alt="Embalagem Sustentável">
+                <h3>Embalagem Sustentável</h3>
+                <p>Branding & Embalagem [3 fotos]</p>
             </div>
             <!-- Projeto 2 -->
-            <div class="carousel-item" onclick="openGallery('DIR // POSTER_SERIGRAFIA', ['https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1561997915-2e00c62adc78?auto=format&fit=crop&w=600&q=80'])">
+            <div class="carousel-item" onclick="openGallery('Poster Serigrafia', ['https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1561997915-2e00c62adc78?auto=format&fit=crop&w=600&q=80'])">
                 <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=300&q=80" alt="Poster Serigrafia">
-                <h3>./poster_serigrafia</h3>
-                <p>status: concluído [2 arquivos]</p>
+                <h3>Poster Serigrafia</h3>
+                <p>Ilustração & Arte [2 fotos]</p>
             </div>
             <!-- Projeto 3 -->
-            <div class="carousel-item" onclick="openGallery('DIR // BRANDING_FISICO', ['https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80'])">
-                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=300&q=80" alt="Branding Físico">
-                <h3>./branding_fisico</h3>
-                <p>status: concluído [3 arquivos]</p>
+            <div class="carousel-item" onclick="openGallery('Identidade Visual Corporativa', ['https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=600&q=80', 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80'])">
+                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=300&q=80" alt="Identidade Visual Corporativa">
+                <h3>Identidade Visual Corporativa</h3>
+                <p>Branding Completo [3 fotos]</p>
             </div>
         </div>
     </section>
 
-    <!-- MODAL / GALERIA DE FOTOS DETALHADA -->
+    <!-- MODAL / GALERIA AMPLIADA -->
     <div id="galleryModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeGallery()">[X]</span>
-            <h3 id="modal-title">DIRETÓRIO</h3>
+            <span class="close-btn" onclick="closeGallery()">&times;</span>
+            <h3 id="modal-title">Título do Projeto</h3>
             <div id="modal-gallery-images" class="modal-images-grid">
-                <!-- Fotos inseridas dinamicamente via JS -->
+                <!-- As fotos do projeto selecionado aparecem aqui de forma dinâmica -->
             </div>
         </div>
     </div>
 
     <!-- SEÇÃO CONTATO -->
     <section id="contato" class="contato-section">
-        <h2 class="section-title">// 03. COMUNICAÇÃO</h2>
+        <h2>Contato</h2>
         <div class="contato-info">
-            <p>&gt; E-MAIL: <a href="mailto:jeje@gmail.com">jeje@gmail.com</a></p>
-            <p>&gt; INSTAGRAM: <a href="https://instagram.com/jejegraphic" target="_blank">@jejegraphic</a></p>
-            <p>&gt; TELEFONE: [987-123-4567]</p>
+            <p>E-mail: <a href="mailto:jeje@gmail.com">jeje@gmail.com</a></p>
+            <p>Instagram: <a href="https://instagram.com/jejegraphic" target="_blank">@jejegraphic</a></p>
+            <p>Telefone: (987) 123-4567</p>
         </div>
     </section>
 
