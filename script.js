@@ -1,4 +1,4 @@
-// Função para abrir o modal com as fotos do projeto clicado
+// Função para abrir o modal com as fotos do projeto clicado// Função para abrir o modal com as fotos do projeto clicado
 function openGallery(title, imageUrls) {
     const modal = document.getElementById('galleryModal');
     const modalTitle = document.getElementById('modal-title');
