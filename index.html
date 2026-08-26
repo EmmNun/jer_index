@@ -3,62 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeremy Ortiz // Designer Gráfico</title>
+    <title>Jeremy Ortiz | Graphic Designer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- BARRA DE NAVEGAÇÃO -->
+    <!-- NAVEGAÇÃO -->
     <nav>
-        <div class="logo">JEREMY ORTIZ</div>
+        <div class="logo">JO</div>
         <ul class="nav-links">
             <li><a href="#home">Início</a></li>
-            <li><a href="#sobre">Sobre</a></li>
-            <li><a href="#trabalhos">Trabalhos</a></li>
+            <li><a href="#sobre">Sobre Mim</a></li>
+            <li><a href="#trabalhos">Meus Trabalhos</a></li>
             <li><a href="#contato">Contato</a></li>
         </ul>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (INÍCIO) - ESTILO OLD SCHOOL -->
     <section id="home" class="home">
-        <div class="diamond-background">
-            <div class="diamond-col col-1">
-                <div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div>
-            </div>
-            <div class="diamond-col col-2">
-                <div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div>
-            </div>
-            <div class="diamond-col col-3">
-                <div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div>
-            </div>
-            <div class="diamond-col col-4">
-                <div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div>
-            </div>
-            <div class="diamond-col col-5">
-                <div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div>
-            </div>
-            <div class="diamond-col col-6">
-                <div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div><div class="diamond"></div>
-            </div>
-        </div>
 
+        <!-- Grade de losangos (gerada via JS) -->
+        <div class="diamond-grid" id="diamond-grid"></div>
+        <div class="star star-left">★</div>
+        <div class="star star-right">★</div>
+
+        <!-- Título Principal -->
         <div class="title-wrapper">
-            <h1 class="gradient-title">JEREMY ORTIZ</h1>
-            <p class="subtitle">Designer Gráfico & Criativo</p>
+            <h1><span class="word-blue">GRAPHIC</span> <span class="word-red">DESIGNER</span></h1>
         </div>
+        <p class="hero-sub">by Jeremy Ortiz</p>
     </section>
 
     <!-- SEÇÃO SOBRE MIM -->
     <section id="sobre" class="sobre-section">
-        <h2>Sobre Mim</h2>
+        <h2 class="section-title">Sobre Mim</h2>
         <div class="sobre-container">
             <div class="sobre-imagem-box">
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Jeremy Ortiz" class="sobre-foto">
+                <img src="https://via.placeholder.com/400x500/111/fff?text=Jeremy+Ortiz" alt="Jeremy Ortiz" class="sobre-foto">
             </div>
             <div class="sobre-texto">
-                <p>Olá! Meu nome é <strong>Jeremy Ortiz</strong>. Sou um Designer Gráfico apaixonado por transformar conceitos em identidades visuais marcantes, funcionais e cheias de personalidade.</p>
-                <p>Trabalho com foco em branding, direção de arte e design digital, sempre buscando entregar projetos que conectam marcas ao seu público de forma autêntica.</p>
-                
+                <p>Olá! Meu nome é <strong>Jeremy Ortiz</strong>, sou Designer Gráfico apaixonado por transformar ideias conceituais em experiências visuais marcantes e identidades autênticas.</p>
+                <p>Especializado em branding, design editorial e impressos de alta precisão, busco sempre unir a estética retrô-futurista e o minimalismo contemporâneo com composições cheias de energia e identidade visual forte.</p>
+
                 <div class="stats-grid">
                     <div class="stat-card">
                         <h3>5+</h3>
@@ -66,11 +52,11 @@
                     </div>
                     <div class="stat-card">
                         <h3>50+</h3>
-                        <p>Projetos Entregues</p>
+                        <p>Projetos Criados</p>
                     </div>
                     <div class="stat-card">
                         <h3>100%</h3>
-                        <p>Clientes Satisfeitos</p>
+                        <p>Dedicação</p>
                     </div>
                 </div>
             </div>
@@ -79,35 +65,52 @@
 
     <!-- SEÇÃO MEUS TRABALHOS -->
     <section id="trabalhos" class="galeria-section">
-        <h2>Meus Trabalhos</h2>
-        <p class="section-subtitle">Conheça alguns dos projetos desenvolvidos recentemente</p>
-        
+        <h2 class="section-title">Meus Trabalhos</h2>
         <div class="carousel">
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=300&q=80" alt="Embalagem Sustentável">
-                <h3>Embalagem Sustentável</h3>
-                <p>Branding & Embalagem</p>
+            <div class="carousel-item" onclick="openModal(0)">
+                <img src="https://via.placeholder.com/300x200/111/fff?text=Embalagem" alt="Projeto 1">
+                <h3>Embalagem Eco</h3>
+                <p>Design de embalagem física com acabamento especial.</p>
             </div>
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=300&q=80" alt="Poster Serigrafia">
+            <div class="carousel-item" onclick="openModal(1)">
+                <img src="https://via.placeholder.com/300x200/111/fff?text=Poster" alt="Projeto 2">
                 <h3>Poster Serigrafia</h3>
-                <p>Ilustração & Arte</p>
+                <p>Impressão física e arte editorial limitada.</p>
             </div>
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=300&q=80" alt="Identidade Visual Corporativa">
-                <h3>Identidade Visual</h3>
-                <p>Branding Completo</p>
+            <div class="carousel-item" onclick="openModal(2)">
+                <img src="https://via.placeholder.com/300x200/111/fff?text=Branding" alt="Projeto 3">
+                <h3>Branding Físico</h3>
+                <p>Papelaria e materiais de marca impressos.</p>
             </div>
         </div>
     </section>
 
+    <!-- MODAL DE DETALHES DO PROJETO / GALERIA DE FOTOS -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+
+            <h3 id="modal-title">Título do Projeto</h3>
+
+            <div class="modal-gallery">
+                <button class="modal-nav prev" onclick="prevImage()" aria-label="Foto anterior">&#10094;</button>
+                <img id="modal-image" src="" alt="Foto do projeto">
+                <button class="modal-nav next" onclick="nextImage()" aria-label="Próxima foto">&#10095;</button>
+            </div>
+
+            <div class="modal-thumbs" id="modal-thumbs"></div>
+
+            <p id="modal-desc">Descrição do projeto...</p>
+        </div>
+    </div>
+
     <!-- SEÇÃO CONTATO -->
     <section id="contato" class="contato-section">
-        <h2>Contato</h2>
+        <h2 class="section-title">Contato</h2>
         <div class="contato-info">
             <p>E-mail: <a href="mailto:jeje@gmail.com">jeje@gmail.com</a></p>
             <p>Instagram: <a href="https://instagram.com/jejegraphic" target="_blank">@jejegraphic</a></p>
-            <p>Telefone: (987) 123-4567</p>
+            <p>Telefone: 9871234567</p>
         </div>
     </section>
 
