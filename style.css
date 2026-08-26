@@ -87,16 +87,18 @@ nav {
 }
 
 /* Estilo individual de cada losango brilhante */
+/* Estilo individual de cada losango brilhante e pontudo */
 .diamond {
     width: 100%;
     height: 100%;
     background-color: var(--tile-color);
-    transform: rotate(45deg);
-    box-shadow: 0 0 12px var(--tile-color), inset 0 0 8px rgba(255, 255, 255, 0.6);
-    border-radius: 4px;
+    /* Deixa o losango mais esticado/pontudo ajustando a escala nas pontas */
+    transform: rotate(45deg) scale(0.7, 1.3); 
+    /* Aumenta o brilho externo (neon) e interno */
+    box-shadow: 0 0 20px var(--tile-color), 0 0 40px var(--tile-color), inset 0 0 12px rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
     transition: transform 0.3s ease;
 }
-
 /* Conteúdo do Hero (Título e Subtítulo) */
 .hero-content {
     position: relative;
