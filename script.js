@@ -40,6 +40,9 @@ function buildDiamondGrid() {
 // =========================================
 // DADOS DOS PROJETOS (Adicione novos projetos aqui)
 // =========================================
+// =========================================
+// DADOS DOS PROJETOS (Adicione novos projetos aqui)
+// =========================================
 const projects = [
     {
         title: 'Embalagem Eco',
@@ -65,6 +68,17 @@ const projects = [
         images: [
             'https://via.placeholder.com/700x500/111/fff?text=Branding+1',
             'https://via.placeholder.com/700x500/222/fff?text=Branding+2'
+        ]
+    },
+    // SEU NOVO PROJETO COM IMAGENS IMAGINÁRIAS:
+    {
+        title: 'Identidade Visual Neon',
+        desc: 'Projeto conceitual focado em tipografia futurista e paleta de cores vibrantes.',
+        images: [
+            'https://via.placeholder.com/700x500/220022/fff?text=Neon+Principal',
+            'https://via.placeholder.com/700x500/002222/fff?text=Neon+Detalhe+1',
+            'https://via.placeholder.com/700x500/222200/fff?text=Neon+Detalhe+2',
+            'https://via.placeholder.com/700x500/000022/fff?text=Neon+Aplicacao'
         ]
     }
 ];
