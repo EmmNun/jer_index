@@ -61,26 +61,20 @@
     </section>
 
     <!-- SEÇÃO MEUS TRABALHOS -->
-    <section id="trabalhos" class="galeria-section">
-        <h2 class="section-title">Meus Trabalhos</h2>
-        <div class="carousel">
-            <div class="carousel-item" onclick="openModal(0)">
-                <img src="https://via.placeholder.com/300x200/111/fff?text=Embalagem" alt="Projeto 1">
-                <h3>Embalagem Eco</h3>
-                <p>Design de embalagem física com acabamento especial.</p>
-            </div>
-            <div class="carousel-item" onclick="openModal(1)">
-                <img src="https://via.placeholder.com/300x200/111/fff?text=Poster" alt="Projeto 2">
-                <h3>Poster Serigrafia</h3>
-                <p>Impressão física e arte editorial limitada.</p>
-            </div>
-            <div class="carousel-item" onclick="openModal(2)">
-                <img src="https://via.placeholder.com/300x200/111/fff?text=Branding" alt="Projeto 3">
-                <h3>Branding Físico</h3>
-                <p>Papelaria e materiais de marca impressos.</p>
-            </div>
+    <!-- SEÇÃO MEUS TRABALHOS -->
+<section id="trabalhos" class="galeria-section">
+    <h2 class="section-title">Meus Trabalhos</h2>
+    
+    <div class="carousel-container-wrapper">
+        <button class="carousel-btn prev-btn" onclick="scrollCarousel(-1)">&#10094;</button>
+        
+        <div class="carousel" id="project-carousel">
+            <!-- Os projetos serão inseridos automaticamente pelo JavaScript! -->
         </div>
-    </section>
+        
+        <button class="carousel-btn next-btn" onclick="scrollCarousel(1)">&#10095;</button>
+    </div>
+</section>
 
     <!-- MODAL DE DETALHES DO PROJETO -->
     <div id="modal" class="modal">
