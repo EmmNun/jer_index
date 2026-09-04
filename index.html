@@ -1,108 +1,99 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jeremy Ortiz | Graphic Designer</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeremy Ortiz | Graphic Designer</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- NAVEGAÇÃO -->
+  <header class="navbar">
+    <div class="logo">JO</div>
     <nav>
-        <div class="logo">JO</div>
-        <ul class="nav-links">
-            <li><a href="#home">Início</a></li>
-            <li><a href="#sobre">Sobre Mim</a></li>
-            <li><a href="#trabalhos">Meus Trabalhos</a></li>
-            <li><a href="#contato">Contato</a></li>
-        </ul>
+      <a href="#home">Home</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#galeria">Trabalhos</a>
+      <a href="#contato">Contato</a>
     </nav>
+  </header>
 
-    <!-- HERO SECTION (INÍCIO) -->
-    <section id="home" class="home">
-        <!-- Grade de losangos gerada dinamicamente via JavaScript -->
-        <div id="diamond-grid"></div>
-
-        <!-- Título e Subtítulo -->
-        <div class="hero-content">
-            <h1>GRAPHIC DESIGNER</h1>
-            <p>Jeremy Ortiz</p>
-        </div>
-    </section>
-
-    <!-- SEÇÃO SOBRE MIM -->
-    <section id="sobre" class="sobre-section">
-        <h2 class="section-title">Sobre Mim</h2>
-        <div class="sobre-container">
-            <div class="sobre-imagem-box">
-                <img src="https://via.placeholder.com/400x500/111/fff?text=Jeremy+Ortiz" alt="Jeremy Ortiz" class="sobre-foto">
-            </div>
-            <div class="sobre-texto">
-                <p>Olá! Meu nome é <strong>Jeremy Ortiz</strong>, sou Designer Gráfico apaixonado por transformar ideias conceituais em experiências visuais marcantes e identidades autênticas.</p>
-                <p>Especializado em branding, design editorial e impressos de alta precisão, busco sempre unir a estética retrô-futurista e o minimalismo contemporâneo com composições cheias de energia e identidade visual forte.</p>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>5+</h3>
-                        <p>Anos de Experiência</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>50+</h3>
-                        <p>Projetos Criados</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>100%</h3>
-                        <p>Dedicação</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO MEUS TRABALHOS -->
-    <section id="trabalhos" class="galeria-section">
-        <h2 class="section-title">Meus Trabalhos</h2>
-        
-        <div class="carousel-container-wrapper">
-            <button class="carousel-btn prev-btn" onclick="scrollCarousel(-1)">&#10094;</button>
-            
-            <div class="carousel" id="project-carousel">
-                <!-- Os projetos são inseridos automaticamente pelo JavaScript -->
-            </div>
-            
-            <button class="carousel-btn next-btn" onclick="scrollCarousel(1)">&#10095;</button>
-        </div>
-    </section>
-
-    <!-- MODAL DE DETALHES DO PROJETO -->
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 id="modal-title">Título do Projeto</h3>
-            <p id="modal-desc">Descrição do projeto...</p>
-            
-            <div class="modal-gallery-container">
-                <img id="modal-image" src="" alt="Imagem do Projeto">
-                <div class="modal-nav-buttons">
-                    <button onclick="prevImage()">&#10094;</button>
-                    <button onclick="nextImage()">&#10095;</button>
-                </div>
-            </div>
-            <div id="modal-thumbs" class="modal-thumbs"></div>
-        </div>
+  <section id="home" class="hero">
+    <div class="feixes-luz"></div>
+    <div class="tech-background"></div>
+    
+    <div class="hero-content">
+      <h1 class="glitch-title" data-text="JEREMY ORTIZ">JEREMY ORTIZ</h1>
+      <p class="subtitle">GRAPHIC DESIGNER</p>
     </div>
+  </section>
 
-    <!-- SEÇÃO CONTATO -->
-    <section id="contato" class="contato-section">
-        <h2 class="section-title">Contato</h2>
-        <div class="contato-info">
-            <p>E-mail: <a href="mailto:jeje@gmail.com">jeje@gmail.com</a></p>
-            <p>Instagram: <a href="https://instagram.com/jejegraphic" target="_blank">@jejegraphic</a></p>
-            <p>Telefone: 9871234567</p>
+  <section id="sobre" class="sobre">
+    <div class="container-sobre">
+      <div class="bio">
+        <h2>Sobre Mim</h2>
+        <p>Especialista em branding, comunicação visual e projetos de impressão em grande formato. Combinando estética digital moderna com técnicas avançadas de produção física.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>5+</h3>
+          <p>Anos de Experiência</p>
         </div>
-    </section>
+        <div class="stat-card">
+          <h3>50+</h3>
+          <p>Projetos Entregues</p>
+        </div>
+        <div class="stat-card">
+          <h3>100%</h3>
+          <p>Dedicação</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <section id="galeria" class="galeria">
+    <h2>Galeria de Trabalhos</h2>
+    <div class="galeria-grid">
+      <div class="card-trabalho">
+        <img src="caminho-da-sua-imagem1.png" alt="Projeto 1" class="png-preview">
+        <div class="card-info">
+          <h3>Identidade Visual</h3>
+          <p>Branding e Embalagem</p>
+        </div>
+      </div>
+      <div class="card-trabalho">
+        <img src="caminho-da-sua-imagem2.png" alt="Projeto 2" class="png-preview">
+        <div class="card-info">
+          <h3>Impressão em Grande Formato</h3>
+          <p>Comunicação Visual</p>
+        </div>
+      </div>
+      <div class="card-trabalho">
+        <img src="caminho-da-sua-imagem3.png" alt="Projeto 3" class="png-preview">
+        <div class="card-info">
+          <h3>Design 3D & Wireframe</h3>
+          <p>Modelagem e Arte Digital</p>
+        </div>
+      </div>
+      <div class="card-trabalho">
+        <img src="caminho-da-sua-imagem4.png" alt="Projeto 4" class="png-preview">
+        <div class="card-info">
+          <h3>Design Editorial</h3>
+          <p>Material Gráfico Impresso</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contato">
+    <p>Jeremy Ortiz &copy; 2026 — Todos os direitos reservados</p>
+    <div class="contato-links">
+      <a href="mailto:contato@jeremyortiz.com">E-mail</a>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
