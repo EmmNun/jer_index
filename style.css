@@ -1,190 +1,153 @@
+html {
+  scroll-behavior: smooth; /* Faz a navegação para cada seção ser suave */
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Arial Black', sans-serif;
 }
 
 body {
-  background-color: #050505;
+  background-color: #000000;
   color: #ffffff;
   overflow-x: hidden;
 }
 
-/* Navbar */
+/* Toolbar Fixa e Transparente */
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
-  background: rgba(5, 5, 5, 0.8);
+  padding: 25px 50px;
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
   z-index: 1000;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+.logo-name {
+  font-size: 20px;
+  font-weight: 900;
+  color: #ffffff;
   letter-spacing: 2px;
-  color: #0088FF;
 }
 
-.navbar nav a {
-  color: #fff;
+.nav-links a {
+  color: #ffffff;
   text-decoration: none;
-  margin-left: 30px;
+  margin-left: 35px;
+  font-size: 13px;
+  letter-spacing: 2px;
   transition: color 0.3s;
 }
 
-.navbar nav a:hover {
-  color: #FF0044;
+.nav-links a:hover {
+  color: #0088FF; /* Azul no Hover */
 }
 
-/* Hero Section */
-.hero {
-  position: relative;
+/* Hero Section Ocupando 100% da Tela */
+.hero-fullscreen {
+  width: 100vw;
   height: 100vh;
+  /* Insira aqui o arquivo da imagem gerada */
+  background: url('sua-imagem-hero.jpg') center center / cover no-repeat;
+}
+
+/* Seções da Página */
+.section-container {
+  min-height: 100vh;
+  padding: 120px 50px 60px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+#about {
+  background-color: #050505;
+  border-bottom: 1px solid #111;
+}
+
+#about h2, #works h2, #contact h2 {
+  font-size: 2.5rem;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  color: #ffffff;
+  text-shadow: 2px 2px 0px #FF0044, -2px -2px 0px #0088FF;
+}
+
+/* Grid de Trabalhos */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  width: 100%;
+  max-width: 1400px;
+  margin-top: 40px;
+}
+
+.work-card {
+  background: #0a0a0a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.work-card:hover {
+  transform: translateY(-8px);
+  border-color: #0088FF;
+  box-shadow: 0 0 20px rgba(0, 136, 255, 0.3);
+}
+
+.png-holder {
+  width: 100%;
+  height: 260px;
+  background: #111;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-/* Elementos Tecnológicos do Fundo */
-.tech-background {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    linear-gradient(to right, rgba(0, 136, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 0, 68, 0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 10;
-}
-
-.glitch-title {
-  font-size: 4rem;
-  font-weight: 900;
-  letter-spacing: 5px;
-  color: #fff;
-  text-shadow: 
-    3px 3px 0px #FF0044, 
-    -3px -3px 0px #0088FF;
-}
-
-.subtitle {
-  font-size: 1.5rem;
-  letter-spacing: 8px;
-  color: #0088FF;
-  margin-top: 15px;
-}
-
-/* Seção Sobre */
-.sobre {
-  padding: 100px 50px;
-  background: #0a0a0a;
-}
-
-.container-sobre {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.stat-card {
-  background: #111;
-  padding: 30px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 136, 255, 0.2);
-  text-align: center;
-}
-
-.stat-card h3 {
-  font-size: 2.5rem;
-  color: #FF0044;
-}
-
-/* Galeria Ampliada */
-.galeria {
-  padding: 100px 50px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.galeria h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.galeria-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 40px;
-}
-
-.card-trabalho {
-  position: relative;
-  background: #121212;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 30px;
-  min-height: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  transition: transform 0.3s, border-color 0.3s;
-}
-
-.card-trabalho:hover {
-  transform: translateY(-10px);
-  border-color: #0088FF;
-  box-shadow: 0 10px 30px rgba(0, 136, 255, 0.2);
-}
-
-.png-preview {
-  max-width: 100%;
-  max-height: 280px;
+.png-holder img {
+  max-width: 90%;
+  max-height: 90%;
   object-fit: contain;
 }
 
-.card-info {
-  width: 100%;
-  text-align: left;
+.work-card h3 {
   margin-top: 20px;
+  font-size: 1.1rem;
+  color: #ffffff;
 }
 
-/* Rodapé */
-footer {
-  padding: 40px;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Rodapé / Contato */
+.footer-section {
+  background: #030303;
 }
 
-.contato-links a {
-  color: #fff;
-  margin-left: 20px;
+.contact-links {
+  margin-top: 30px;
+}
+
+.contact-links a {
+  color: #ffffff;
   text-decoration: none;
+  margin: 0 15px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  transition: color 0.3s;
+}
+
+.contact-links a:hover {
+  color: #FF0044; /* Vermelho no Hover */
 }
